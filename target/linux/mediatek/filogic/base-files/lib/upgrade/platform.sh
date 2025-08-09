@@ -210,6 +210,12 @@ platform_do_upgrade() {
 			;;
 		esac
 		;;
+	beeconmini,seed-ac2)
+		CI_KERNPART="kernel"
+		CI_ROOTPART="rootfs"
+		CI_DATAPART="rootfs_data"
+		emmc_do_upgrade "$1"
+		;;
 	xiaomi,mi-router-ax3000t|\
 	xiaomi,mi-router-wr30u-stock|\
 	xiaomi,redmi-router-ax6000-stock)
@@ -325,6 +331,7 @@ platform_copy_config() {
 	cmcc,rax3000m|\
 	cmcc,rax3000me|\
 	gatonetworks,gdsp|\
+	beeconmini,seed-ac2|\
 	mediatek,mt7988a-rfb)
 		if [ "$CI_METHOD" = "emmc" ]; then
 			emmc_copy_config
